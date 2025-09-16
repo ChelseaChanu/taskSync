@@ -1,0 +1,96 @@
+@import "tailwindcss";
+
+/* your custom overrides go below */
+
+
+@theme {
+  --breakpoint-xs: 480px;
+  --breakpoint-xsm: 500px;
+  --breakpoint-sm: 580px;
+  --breakpoint-mds: 660px;
+  --breakpoint-md: 790px;
+  --breakpoint-mdl: 900px;
+  --breakpoint-mdln: 950px;
+  --breakpoint-lg: 1090px;
+  --breakpoint-lgm: 1220px;
+  --breakpoint-xl: 1330px;
+}
+
+:root {
+  font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
+  line-height: 1.5;
+  font-weight: 400;
+
+  color-scheme: light dark;
+  color: rgba(255, 255, 255, 0.87);
+  background-color: #242424;
+
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  font-weight: 500;
+  color: #646cff;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #535bf2;
+}
+
+input, textarea {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  min-width: 100vw;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+  transition: border-color 0.25s;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;  
+  scrollbar-width: none;     
+}
+
+@media (prefers-color-scheme: light) {
+  :root {
+    color: #213547;
+    background-color: #ffffff;
+  }
+  a:hover {
+    color: #747bff;
+  }
+}
+
+
+/* custom date picker style */
+.custom-datepicker .react-datepicker-wrapper{
+  width: 100% !important;
+}
+.custom-datepicker .react-datepicker__input-container{
+  display: flex !important;
+  align-items: center !important;
+  gap: 10px;
+  padding: 0.5rem 1rem !important;
+  border: 1px solid #9fa5a5 !important;
+  border-radius: 20px !important;
+  width: 100%;
+}
