@@ -7,8 +7,6 @@ import {
   query, 
   where, 
   getDocs, 
-  // onSnapshot, 
-  // orderBy 
 } from "firebase/firestore";
 import { auth, db } from "../firebase";
 
@@ -117,13 +115,13 @@ function Dashboard() {
   }, []);
 
   return (
-    <div class="w-full min-h-screen">
-      <div class="bg-[#f4f6f9] w-full p-5 xs:px-10 xs:py-8">
-        <h2 class="text-[#222323] font-semibold text-[28px] pt-4 pb-1">{`Welcome ${userName.firstName} ${userName.lastName}`}</h2>
-        <p class="text-[#303232] text-xl">This is your task dashboard</p>
-        <div class="flex flex-col gap-4 pt-5">
-          <h3 class="text-2xl font-semibold">Updates</h3>
-          <div class="w-full flex flex-row overflow-x-auto hide-scrollbar pb-10 gap-5
+    <div className="w-full min-h-screen">
+      <div className="bg-[#f4f6f9] w-full p-5 xs:px-10 xs:py-8">
+        <h2 className="text-[#222323] font-semibold text-[28px] pt-4 pb-1">{`Welcome ${userName.firstName} ${userName.lastName}`}</h2>
+        <p className="text-[#303232] text-xl">This is your task dashboard</p>
+        <div className="flex flex-col gap-4 pt-5">
+          <h3 className="text-2xl font-semibold">Updates</h3>
+          <div className="w-full flex flex-row overflow-x-auto hide-scrollbar pb-10 gap-5
             md:grid md:grid-cols-2 md:gap-x-5 md:w-[490px] lg:grid-cols-3 lg:w-[745px] xl:grid-cols-4 xl:w-full xl:grid-x-3">
             <DashboardCard 
               title = "Assigned by Me"
@@ -159,21 +157,21 @@ function Dashboard() {
             />
           </div>
         </div>
-        <div class="flex flex-col gap-4 pt-5 border-t border-[#303232]">
-          <div class="flex flex-row items-center gap-3">
-            <img src="/public/Assets/Icons/notification.png" alt="" />
-            <h3 class="text-2xl font-semibold">Notifications</h3>
+        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+          <div className="flex flex-row items-center gap-3">
+            <img src={`/Images/notification.png`} alt="" />
+            <h3 className="text-2xl font-semibold">Notifications</h3>
           </div>
-          <ul class="flex flex-col justify-center gap-2.5 p-4">
+          <ul className="flex flex-col justify-center gap-2.5 p-4">
             <li>Student A submitted HW</li>
             <li>Extension request: Task X</li>
             <li>Deadline missed: Report</li>
           </ul>
         </div>
-        <div class="flex flex-col gap-4 pt-5 border-t border-[#303232]">
-          <div class="flex flex-row items-center gap-3">
-            <img src="/public/Assets/Icons/calendar.png" alt="" />
-            <h3 class="text-2xl font-semibold">Upcoming Deadlines</h3>
+        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+          <div className="flex flex-row items-center gap-3">
+            <img src={`/Images/calendar.png`} alt="" />
+            <h3 className="text-2xl font-semibold">Upcoming Deadlines</h3>
           </div>
           <div className="max-h-[8.3rem] overflow-y-auto">
             <ul className="flex flex-col justify-center gap-2.5 p-4">
@@ -185,12 +183,12 @@ function Dashboard() {
             </ul>
           </div>
         </div>
-        <div class="flex flex-col gap-4 pt-5 border-t border-[#303232]">
-          <div class="flex flex-row items-center gap-3">
-            <img src="/public/Assets/Icons/recent-activities.png" alt="" />
-            <h3 class="text-2xl font-semibold">Recent Activities</h3>
+        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+          <div className="flex flex-row items-center gap-3">
+            <img src={`/Images/recent-activities.png`}alt="" />
+            <h3 className="text-2xl font-semibold">Recent Activities</h3>
           </div>
-          <ul class="flex flex-col justify-center gap-2.5 p-4">
+          <ul className="flex flex-col justify-center gap-2.5 p-4">
             <li>You assigned Essay (Sep 10)</li>
             <li>Extension approved (Task X)</li>
             <li>Principal verified Report</li>

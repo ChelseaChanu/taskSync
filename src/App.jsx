@@ -12,7 +12,7 @@ function App() {
 
 
   return (
-    <div class="w-screen flex justify-center">
+    <div className="w-screen flex justify-center">
       <Routes>
         <Route path="/" element={<Login/>} />          
         <Route path="/forgot-password" element={<ForgotPassword/>} />

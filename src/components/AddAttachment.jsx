@@ -88,21 +88,21 @@ function AddAttachment({ onAttachmentsChange, reset }) {
   };
 
   return (
-    <div class="flex flex-col gap-3 bg-white py-3 px-2.5 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)] xsm:py-5 xsm:px-7"
+    <div className="flex flex-col gap-3 bg-white py-3 px-2.5 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)] xsm:py-5 xsm:px-7"
       onClick={handleUpload}
     >
-      <p class="text-[#6b7070]">Add Attachment</p>
-      <div class="flex flex-col justify-center items-center gap-1.5 w-full h-[120px] rounded-xl border border-dashed border-[#e49e9e] cursor-pointer">
-        <img src="/public/Assets/Icons/document-attachment.png" class="cursor-pointer"/>
-        <p class="text-[#424545] text-sm font-semibold">Upload Documents</p>
-        <p class={`text-sm ${uploading? 'text-red-400':'text-[#909797] '}`}>{uploading ? "Uploading..." : "Max file size: 5MB"}</p>
+      <p className="text-[#6b7070]">Add Attachment</p>
+      <div className="flex flex-col justify-center items-center gap-1.5 w-full h-[120px] rounded-xl border border-dashed border-[#e49e9e] cursor-pointer">
+        <img src={`/Images/document-attachment.png`} alt="doc" className="cursor-pointer"/>
+        <p className="text-[#424545] text-sm font-semibold">Upload Documents</p>
+        <p className={`text-sm ${uploading? 'text-red-400':'text-[#909797] '}`}>{uploading ? "Uploading..." : "Max file size: 5MB"}</p>
         {/* Hidden file input */}
         <input
           type="file" 
           accept=".pdf,.doc,.docx,.xls,.xlsx,.png,.jpg,.jpeg,.ppt,.pptx"
           ref={fileInputRef} 
           onChange={handleFileChange} 
-          class="hidden"/>
+          className="hidden"/>
       </div>
       {/* Preview selected files */}
       <div className="mt-2 flex flex-col gap-1">

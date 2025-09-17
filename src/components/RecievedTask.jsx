@@ -40,9 +40,9 @@ function RecievedTask() {
   }, []);
 
   return (
-    <div class="w-full min-h-screen flex flex-col p-5 bg-[#f4f6f9] z-10">
+    <div className="w-full min-h-screen flex flex-col p-5 bg-[#f4f6f9] z-10">
       <h2 className='text-[#222323] text-center font-semibold text-[28px] pt-5 pb-1 mds:text-left'>List of Recieved Task</h2>
-      <div class="flex flex-col py-5 gap-2 justify-center items-center mds:items-start mds:grid mds:grid-cols-2 md:grid-cols-1 mdl:grid-cols-2 lgm:grid-cols-3">
+      <div className="flex flex-col py-5 gap-2 justify-center items-center mds:items-start mds:grid mds:grid-cols-2 md:grid-cols-1 mdl:grid-cols-2 lgm:grid-cols-3">
         {tasks.length === 0 ? (
         <p>No tasks assigned to you yet.</p>
       ) : (

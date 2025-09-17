@@ -46,60 +46,60 @@ function TaskCard() {
   }
 
   return (
-    <div class="w-full min-h-screen flex flex-col gap-6 px-5 pt-5 pb-8 bg-[#f4f6f9] z-10 mdl:px-10">
-      <div class="flex flex-row w-full justify-start">
-        <img onClick={() => navigate("/recieved-task")} class="" src="/public/Assets/Icons/task-back.png" alt="" />
-        <h2 class="w-full font-semibold text-[#2e2f31] text-[18px] text-center">Task</h2>
+    <div className="w-full min-h-screen flex flex-col gap-6 px-5 pt-5 pb-8 bg-[#f4f6f9] z-10 mdl:px-10">
+      <div className="flex flex-row w-full justify-start">
+        <img onClick={() => navigate("/recieved-task")} className="" src={`/Images/task-back.png`} alt="" />
+        <h2 className="w-full font-semibold text-[#2e2f31] text-[18px] text-center">Task</h2>
       </div>
-      <div class="w-full flex justify-center items-center">
-        <h1 class="w-full !text-[26px] text-left">{task.title}</h1>
+      <div className="w-full flex justify-center items-center">
+        <h1 className="w-full !text-[26px] text-left">{task.title}</h1>
       </div>
-      <div class="flex flex-col justify-center items-center gap-2 md:w-[500px]">
-        <div class="w-full flex flex-row items-center gap-6">
-          <div class="w-[50%] flex flex-row items-center gap-2">
-            <img src="/public/Assets/Icons/Date-picker.png" alt="" />
-            <p class="text-[#a5a7a9]">Assign Date</p>
+      <div className="flex flex-col justify-center items-center gap-2 md:w-[500px]">
+        <div className="w-full flex flex-row items-center gap-6">
+          <div className="w-[50%] flex flex-row items-center gap-2">
+            <img src={`/Images/Date-picker.png`} alt="" />
+            <p className="text-[#a5a7a9]">Assign Date</p>
           </div>
-          <p class="text-[#252626] text-left">{task.assignDate}</p>
+          <p className="text-[#252626] text-left">{task.assignDate}</p>
         </div>
-        <div class="w-full flex flex-row items-center gap-6">
-          <div class="w-[50%] flex flex-row items-center gap-2">
-            <img src="/public/Assets/Icons/Date-picker.png" alt="" />
-            <p class="text-[#a5a7a9]">Due Date</p>
+        <div className="w-full flex flex-row items-center gap-6">
+          <div className="w-[50%] flex flex-row items-center gap-2">
+            <img src={`/Images/Date-picker.png`} alt="" />
+            <p className="text-[#a5a7a9]">Due Date</p>
           </div>
-          <p class="text-[#252626] text-left">{task.dueDate}</p>
+          <p className="text-[#252626] text-left">{task.dueDate}</p>
         </div>
-        <div class="w-full flex flex-row items-center gap-6">
-          <div class="w-[50%] flex flex-row items-center gap-2">
-            <img src="/public/Assets/Icons/priority.png" alt="" />
-            <p class="text-[#a5a7a9]">Priority Level</p>
+        <div className="w-full flex flex-row items-center gap-6">
+          <div className="w-[50%] flex flex-row items-center gap-2">
+            <img src={`/Images/priority.png`} alt="" />
+            <p className="text-[#a5a7a9]">Priority Level</p>
           </div>
-          <p class="text-[#252626] text-left">{task.priority}</p>
+          <p className="text-[#252626] text-left">{task.priority}</p>
         </div>
-        <div class="w-full flex flex-row items-center gap-6">
-          <div class="w-[50%] flex flex-row items-center gap-2">
-            <img src="/public/Assets/Icons/task-status.png" alt="" />
-            <p class="text-[#a5a7a9]">Assign By</p>
+        <div className="w-full flex flex-row items-center gap-6">
+          <div className="w-[50%] flex flex-row items-center gap-2">
+            <img src={`/Images/task-status.png`} alt="" />
+            <p className="text-[#a5a7a9]">Assign By</p>
           </div>
-          <p class="text-[#252626] text-left">{task.createdByName}</p>
+          <p className="text-[#252626] text-left">{task.createdByName}</p>
         </div>
       </div>
-      <div class="flex flex-col gap-1.5 items-start justify-center">
-        <h2 class="!text-xl text-left">Description</h2>
-        <p class="text-sm">{task.description}</p>
+      <div className="flex flex-col gap-1.5 items-start justify-center">
+        <h2 className="!text-xl text-left">Description</h2>
+        <p className="text-sm">{task.description}</p>
       </div>
 
       {task.attachments && task.attachments.length > 0 ? (
-        <div class="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
-          <h2 class="!text-xl text-left">Attachments</h2>
-            <div class="mt-2 flex flex-col gap-1">
+        <div className="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
+          <h2 className="!text-xl text-left">Attachments</h2>
+            <div className="mt-2 flex flex-col gap-1">
             {task.attachments.map((file, index) => (
                 <a
                 key={index}
                 href={file.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                class="text-sm text-[#565757]"> 
+                className="text-sm text-[#565757]"> 
                 {file.name || `Attachment ${index + 1}`}
               </a>
             ))}
@@ -110,13 +110,13 @@ function TaskCard() {
       )}
         
       {task.assignedToObjects && task.assignedToObjects.length > 0 ? (
-        <div class="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
-          <h2 class="!text-xl text-left">Assign To</h2>
-            <div class="mt-2 flex flex-col gap-1">
+        <div className="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
+          <h2 className="!text-xl text-left">Assign To</h2>
+            <div className="mt-2 flex flex-col gap-1">
             {task.assignedToObjects.map((user, index) => (
               <div key={index}>
                 {user.firstName} {user.lastName} 
-                <span class="text-sm text-[#565757]"> ({user.designation})</span>
+                <span className="text-sm text-[#565757]"> ({user.designation})</span>
               </div>
             ))}
           </div>

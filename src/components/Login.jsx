@@ -146,96 +146,96 @@ function Login() {
   }
 
   return (
-    <div class="w-full min-h-screen flex items-center justify-center bg-[#C7CFE2]">
+    <div className="w-full min-h-screen flex items-center justify-center bg-[#C7CFE2]">
       <form 
         onSubmit={handleSubmit}
-        class="w-full h-screen bg-[linear-gradient(135deg,_#C7CFE2,_#DDE1EE,_#E6EBF5)] flex 
+        className="w-full h-screen bg-[linear-gradient(135deg,_#C7CFE2,_#DDE1EE,_#E6EBF5)] flex 
           flex-col items-center justify-center gap-3 p-6 xs:w-[320px] xs:!h-[550px] xs:rounded-2xl xs:shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
-        <h2 class="text-2xl font-bold mb-2">{isSignup ? "Sign Up" : "Login"}</h2>
+        <h2 className="text-2xl font-bold mb-2">{isSignup ? "Sign Up" : "Login"}</h2>
         {
           isSignup && (
-          <div class="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
-            <img src="/public/Assets/Icons/name.png" alt="" class=""/>
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+            <img src={`/Images/name.png`} alt="" className=""/>
             <input 
               type="text" 
               placeholder='First Name' 
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
               required
-              class="w-full focus:outline-none bg-transparent"/>
+              className="w-full focus:outline-none bg-transparent"/>
           </div>)
         }
         {
           isSignup && (
-          <div class="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
-            <img src="/public/Assets/Icons/name.png" alt="" class=""/>
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+            <img src={`/Images/name.png`} alt="" className=""/>
             <input 
               type="text" 
               placeholder='Last Name' 
               value={lastName}
               onChange={(e) => setLastName(e.target.value)}
               required
-              class="w-full focus:outline-none bg-transparent"/>
+              className="w-full focus:outline-none bg-transparent"/>
           </div>)
         }
         {
           isSignup && (
-          <div class="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
-            <img src="/public/Assets/Icons/Designation.png" alt="" class=""/>
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+            <img src={`/Images/Designation.png`} alt="" className=""/>
             <input 
               type="text" 
               placeholder='Designation' 
               value={designation}
               onChange={(e) => setDesignation(e.target.value)}
               required
-              class="w-full focus:outline-none bg-transparent"/>
+              className="w-full focus:outline-none bg-transparent"/>
           </div>)
         }
-        <div class="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
-          <img src="/public/Assets/Icons/mail.png" alt="" class=""/>
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+          <img src={`/Images/mail.png`} alt="" className=""/>
           <input 
             type="email" 
             placeholder='Email' 
             value={email}
             onChange={(e) => setEmail(e.target.value)}
             required
-            class="w-full focus:outline-none bg-transparent"
+            className="w-full focus:outline-none bg-transparent"
           />
         </div>
-        <div class="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] p-2.5">
-          <img src="/public/Assets/Icons/password.png" alt="" class=""/>
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] p-2.5">
+          <img src={`/Images/password.png`} alt="" className=""/>
           <input 
             type="password" 
             placeholder='Password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required 
-            class="w-full focus:outline-none bg-transparent"/>
+            className="w-full focus:outline-none bg-transparent"/>
         </div>
-        {message && <p class={`${message.type === "error" ? "text-red-600" : "text-green-600"} text-xs`}>
+        {message && <p className={`${message.type === "error" ? "text-red-600" : "text-green-600"} text-xs`}>
           {message.text}
         </p>}
         <button 
           type='submit'
-          class="w-[270px] rounded-3xl bg-[#444665] text-[#efefef] hover:bg-[#171a3d] text-base font-medium px-5 py-2.5">
+          className="w-[270px] rounded-3xl bg-[#444665] text-[#efefef] hover:bg-[#171a3d] text-base font-medium px-5 py-2.5">
             {isSignup ? "Sign Up" : "Login"}
         </button>
         <button
           type="button"
-          class="focus:outline-none text-sm hover:text-gray-600"
+          className="focus:outline-none text-sm hover:text-gray-600"
         >
           <Link to="/forgot-password">Forgot Password?</Link>
         </button>
-        <div class="flex flex-row items-center justify-between gap-3.5">
+        <div className="flex flex-row items-center justify-between gap-3.5">
           <p
-            class="text-sm text-blue-600"
+            className="text-sm text-blue-600"
             onClick={() => setIsSignup(!isSignup)}>
             {isSignup ? "Already have an account?" : "Don't have an account?"}
           </p>
           <button
             type="button"
             onClick={handleToggleMode}
-            class="focus:outline-none text-sm cursor-pointer text-blue-600 hover:text-gray-600">
+            className="focus:outline-none text-sm cursor-pointer text-blue-600 hover:text-gray-600">
             {isSignup ? "Login":"Sign Up"}
           </button>
         </div>
