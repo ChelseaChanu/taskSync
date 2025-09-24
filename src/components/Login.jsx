@@ -69,6 +69,9 @@ function Login() {
           email: user.email,
           createdAt: serverTimestamp(),
         });
+        localStorage.setItem("userRole", designation);  
+        localStorage.setItem("userName", `${firstName} ${lastName}`);
+
         setMessage({ text: "Verification email sent! Please check your inbox.", type: "success" });
         setWaitingVerification(true); 
         return;
@@ -94,6 +97,7 @@ function Login() {
       // Ensure Firestore doc exists for this user
       const userDocRef = doc(db, "users", user.uid);
       const userSnap = await getDoc(userDocRef);
+      let userData;
       if (!userSnap.exists()) {
         await setDoc(userDocRef, {
           firstName: firstName || "",
@@ -102,8 +106,12 @@ function Login() {
           email: user.email,
           createdAt: serverTimestamp(),
         });
+      }else {
+        userData = userSnap.data(); 
       }
 
+      localStorage.setItem("userRole", userData.designation); 
+      localStorage.setItem("userName", `${userData.firstName} ${userData.lastName}`);
       setMessage({ text: "Login successful!", type: "success" });
       navigate("/landing-page");
 

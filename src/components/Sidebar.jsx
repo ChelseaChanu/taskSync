@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from 'react';
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { doc, getDoc } from "firebase/firestore";
 import { auth, db } from "../firebase";
+import { signOut } from "firebase/auth";
 
 function Sidebar() {
 
   const [isOpen, setIsOpen] = useState(false);
   const [userName, setUserName] = useState({ firstName: "", lastName: "" });
   const [designation, setDesignation] = useState("");
+  const navigate = useNavigate();
 
   async function getUserData(user) {
     try {
@@ -26,6 +28,15 @@ function Sidebar() {
       return { firstName: "", lastName: "" };
     }
   }
+
+  const handleLogout = async () => {
+    try {
+      await signOut(auth);
+      navigate("/"); 
+    } catch (error) {
+      console.error("Logout error:", error);
+    }
+  };
 
   useEffect(() => {
     // Auth state listener
@@ -107,7 +118,7 @@ function Sidebar() {
                 <p className="text-[#efefef]">Received Tasks</p>
               </Link>
             </li>
-            <li className="py-4">
+            {/* <li className="py-4">
               <Link
                 to="/history"
                 className="flex flex-row items-center gap-3"
@@ -115,12 +126,11 @@ function Sidebar() {
                 <img src={`/Images/History.png`} alt="" />
                 <p className="text-[#efefef]">History</p>
               </Link>
-            </li>
+            </li> */}
             <li className="py-4">
               <Link
-                to="/history"
-                className="flex flex-row items-center gap-3"
-                onClick={() => setIsOpen(false)}>
+                onClick={handleLogout}
+                className="flex flex-row items-center gap-3">
                 <img src="/" alt="" />
                 <p className="text-[#efefef]">Logout</p>
               </Link>
@@ -171,7 +181,7 @@ function Sidebar() {
               <p className="text-[#efefef]">Received Tasks</p>
             </Link>
           </li>
-          <li className="py-4">
+          {/* <li className="py-4">
             <Link
               to="/history"
               className="flex flex-row items-center gap-3"
@@ -179,12 +189,11 @@ function Sidebar() {
               <img src={`/Images/History.png`} alt="" />
               <p className="text-[#efefef]">History</p>
             </Link>
-          </li>
+          </li> */}
           <li className="py-4">
               <Link
-                to="/history"
                 className="flex flex-row items-center gap-3"
-                onClick={() => setIsOpen(false)}>
+                onClick={handleLogout}>
                 <img src="/" alt="" />
                 <p className="text-[#efefef]">Logout</p>
               </Link>
