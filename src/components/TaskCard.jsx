@@ -102,7 +102,7 @@ function TaskCard() {
   const isAssigner = currentUserId === task.createdBy;
 
   return (
-    <div className="w-full min-h-screen flex flex-col gap-6 px-5 pt-5 pb-8 bg-[#f4f6f9] z-10 mdl:px-10">
+    <div className="w-full min-h-screen flex flex-col gap-6 px-5 pt-5 pb-8 !bg-[#f4f6f9] z-10 mdl:px-10">
       <div className="flex flex-row w-full justify-start">
         <img
           onClick={() => navigate("/recieved-task")}
@@ -110,7 +110,7 @@ function TaskCard() {
           src={`/Images/task-back.png`}
           alt=""
         />
-        <h2 className="w-full font-semibold text-[#2e2f31] text-[18px] text-center">Task</h2>
+        <h2 className="w-full font-semibold !text-[#2e2f31] text-[18px] text-center">Task</h2>
       </div>
 
       <div className="w-full flex justify-center items-center">
@@ -121,30 +121,30 @@ function TaskCard() {
         <div className="w-full flex flex-row items-center gap-6">
           <div className="w-[50%] flex flex-row items-center gap-2">
             <img src={`/Images/Date-picker.png`} alt="" />
-            <p className="text-[#a5a7a9]">Assign Date</p>
+            <p className="!text-[#a5a7a9]">Assign Date</p>
           </div>
-          <p className="text-[#252626] text-left">{task.assignDate}</p>
+          <p className="!text-[#252626] text-left">{task.assignDate}</p>
         </div>
         <div className="w-full flex flex-row items-center gap-6">
           <div className="w-[50%] flex flex-row items-center gap-2">
             <img src={`/Images/Date-picker.png`} alt="" />
-            <p className="text-[#a5a7a9]">Due Date</p>
+            <p className="!text-[#a5a7a9]">Due Date</p>
           </div>
-          <p className="text-[#252626] text-left">{task.dueDate}</p>
+          <p className="!text-[#252626] text-left">{task.dueDate}</p>
         </div>
         <div className="w-full flex flex-row items-center gap-6">
           <div className="w-[50%] flex flex-row items-center gap-2">
             <img src={`/Images/priority.png`} alt="" />
-            <p className="text-[#a5a7a9]">Priority Level</p>
+            <p className="!text-[#a5a7a9]">Priority Level</p>
           </div>
-          <p className="text-[#252626] text-left">{task.priority}</p>
+          <p className="!text-[#252626] text-left">{task.priority}</p>
         </div>
         <div className="w-full flex flex-row items-center gap-6">
           <div className="w-[50%] flex flex-row items-center gap-2">
             <img src={`/Images/task-status.png`} alt="" />
-            <p className="text-[#a5a7a9]">Assign By</p>
+            <p className="!text-[#a5a7a9]">Assign By</p>
           </div>
-          <p className="text-[#252626] text-left">{task.createdByName}</p>
+          <p className="!text-[#252626] text-left">{task.createdByName}</p>
         </div>
       </div>
 
@@ -154,7 +154,7 @@ function TaskCard() {
       </div>
 
       {task.attachments?.length > 0 && (
-        <div className="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
+        <div className="flex flex-col gap-3 !bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
           <h2 className="!text-xl text-left">Attachments</h2>
           <div className="mt-2 flex flex-col gap-1">
             {task.attachments.map((file, index) => (
@@ -163,7 +163,7 @@ function TaskCard() {
                 href={file.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-sm text-[#565757]"
+                className="text-sm !text-[#565757]"
               >
                 {file.name || `Attachment ${index + 1}`}
               </a>
@@ -173,13 +173,13 @@ function TaskCard() {
       )}
 
       {task.assignedToObjects?.length > 0 && (
-        <div className="flex flex-col gap-3 bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
+        <div className="flex flex-col gap-3 !bg-white py-3 px-2 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]">
           <h2 className="!text-xl text-left">Assign To</h2>
           <div className="mt-2 flex flex-col gap-1">
             {task.assignedToObjects.map((user, index) => (
               <div key={index}>
                 {user.firstName} {user.lastName}{" "}
-                <span className="text-sm text-[#565757]">({user.designation})</span>
+                <span className="text-sm !text-[#565757]">({user.designation})</span>
               </div>
             ))}
           </div>
@@ -191,7 +191,7 @@ function TaskCard() {
           <button
             onClick={() => setShowModal(true)}
             type="button"
-            className="w-[280px] bg-[linear-gradient(135deg,_#282b36,_#4c4566)] text-[#efefef] py-2 px-3 rounded"
+            className="w-[280px] bg-[linear-gradient(135deg,_#282b36,_#4c4566)] !text-[#efefef] py-2 px-3 rounded"
           >
             Submit
           </button>
@@ -202,7 +202,7 @@ function TaskCard() {
               setViewModal(true);
             }}
             type="button"
-            className="w-[280px] bg-green-600 text-white py-2 px-3 rounded"
+            className="w-[280px] !bg-green-600 !text-white py-2 px-3 rounded"
           >
             View Submissions
           </button>
@@ -211,11 +211,11 @@ function TaskCard() {
 
       {/* Assignee Modal for submitting */}
       {showModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800/40 backdrop-blur-md z-50">
-          <div className="bg-white rounded-lg p-6 w-[90%] max-w-md">
+        <div className="fixed inset-0 flex items-center justify-center !bg-gray-800/40 backdrop-blur-md z-50">
+          <div className="!bg-white rounded-lg p-6 w-[90%] max-w-md">
             <h3 className="text-xl font-semibold mb-4">Submit Task</h3>
 
-            <label className="block mb-3 text-[#6b7070]">
+            <label className="block mb-3 !text-[#6b7070]">
               Description:
               <textarea
                 rows={5}
@@ -234,13 +234,13 @@ function TaskCard() {
             <div className="flex justify-end gap-3 mt-4">
               <button
                 onClick={() => setShowModal(false)}
-                className="px-4 py-2 bg-gray-300 rounded"
+                className="px-4 py-2 !bg-gray-300 rounded"
               >
                 Cancel
               </button>
               <button
                 onClick={handleSubmit}
-                className="px-4 py-2 bg-blue-600 text-white rounded"
+                className="px-4 py-2 !bg-blue-600 !text-white rounded"
               >
                 Submit
               </button>
@@ -251,8 +251,8 @@ function TaskCard() {
 
       {/* Assigner Modal to view submissions */}
       {viewModal && (
-        <div className="fixed inset-0 flex items-center justify-center bg-gray-800/40 backdrop-blur-md z-50">
-          <div className="bg-gray-100 rounded-lg p-6 w-[90%] max-w-lg max-h-[80vh] overflow-y-auto">
+        <div className="fixed inset-0 flex items-center justify-center !bg-gray-800/40 backdrop-blur-md z-50">
+          <div className="!bg-gray-100 rounded-lg p-6 w-[90%] max-w-lg max-h-[80vh] overflow-y-auto">
             <h3 className="text-xl font-semibold mb-4">Submissions</h3>
 
             {submissions.length === 0 ? (
@@ -270,7 +270,7 @@ function TaskCard() {
                   <div key={idx} className="border-b mb-3 pb-2">
                     <p className="font-medium">
                       {name}{" "}
-                      <span className="text-xs text-gray-500">
+                      <span className="text-xs !text-gray-500">
                         ({sub.submittedAt?.seconds
                           ? new Date(sub.submittedAt.seconds * 1000).toLocaleString()
                           : ""})
@@ -286,7 +286,7 @@ function TaskCard() {
                             href={file.url}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="text-blue-600 underline text-sm"
+                            className="!text-blue-600 underline text-sm"
                           >
                             {file.name}
                           </a>
@@ -300,7 +300,7 @@ function TaskCard() {
 
             <button
               onClick={() => setViewModal(false)}
-              className="mt-4 px-4 py-2 bg-gray-300 rounded"
+              className="mt-4 px-4 py-2 !bg-gray-300 rounded"
             >
               Close
             </button>

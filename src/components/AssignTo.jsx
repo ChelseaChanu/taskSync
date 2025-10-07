@@ -63,10 +63,10 @@ function AssignTo(props) {
   };
 
   return (
-    <div class="flex flex-col gap-3 bg-white py-3 px-2.5 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]
+    <div class="flex flex-col gap-3 !bg-white py-3 px-2.5 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]
       xsm:py-5 xsm:px-7">
       <div>
-        <p class="text-[#6b7070]">Assign To</p>
+        <p class="!text-[#6b7070]">Assign To</p>
         <div class="flex flex-col justify-center items-center gap-3 pt-3">
           <input
             type="text"
@@ -82,7 +82,7 @@ function AssignTo(props) {
         <div class="">
             {/* Dropdown for matching users */}
             {isDropdownOpen && (
-              <div className="absolute  left-[20px] z-10 w-[280px] border border-gray-300 rounded mt-3 bg-white max-h-40 overflow-y-auto shadow-lg">
+              <div className="absolute  left-[20px] z-10 w-[280px] border !border-gray-300 rounded mt-3 !bg-white max-h-40 overflow-y-auto shadow-lg">
                 {filteredUsers.map((user) => (
                   <div
                     key={user.id}
@@ -90,7 +90,7 @@ function AssignTo(props) {
                     onClick={() => toggleSelect(user)}
                   >
                     <span>{user.firstName} {user.lastName}</span>
-                    <span className="text-gray-500 text-sm">{user.designation}</span>
+                    <span className="!text-gray-500 text-sm">{user.designation}</span>
                   </div>
                 ))}
               </div>
@@ -100,7 +100,7 @@ function AssignTo(props) {
               {selectedUsers.map((user) => (
                 <span
                   key={user.id}
-                  className="bg-[#2ccdd6] text-[#373a3a] px-3 py-2 rounded-full text-sm flex items-center gap-1"
+                  className="!bg-[#2ccdd6] !text-[#373a3a] px-3 py-2 rounded-full text-sm flex items-center gap-1"
                 >
                   {user.firstName} {user.lastName}
                   <button

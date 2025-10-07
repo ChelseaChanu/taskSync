@@ -162,7 +162,7 @@ function Login() {
         <h2 className="text-2xl font-bold mb-2">{isSignup ? "Sign Up" : "Login"}</h2>
         {
           isSignup && (
-          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
             <img src={`/Images/name.png`} alt="" className=""/>
             <input 
               type="text" 
@@ -175,7 +175,7 @@ function Login() {
         }
         {
           isSignup && (
-          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
             <img src={`/Images/name.png`} alt="" className=""/>
             <input 
               type="text" 
@@ -188,7 +188,7 @@ function Login() {
         }
         {
           isSignup && (
-          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
             <img src={`/Images/Designation.png`} alt="" className=""/>
             <input 
               type="text" 
@@ -199,7 +199,7 @@ function Login() {
               className="w-full focus:outline-none bg-transparent"/>
           </div>)
         }
-        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
           <img src={`/Images/mail.png`} alt="" className=""/>
           <input 
             type="email" 
@@ -210,7 +210,7 @@ function Login() {
             className="w-full focus:outline-none bg-transparent"
           />
         </div>
-        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] p-2.5">
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] p-2.5">
           <img src={`/Images/password.png`} alt="" className=""/>
           <input 
             type="password" 
@@ -220,7 +220,7 @@ function Login() {
             required 
             className="w-full focus:outline-none bg-transparent"/>
         </div>
-        {message && <p className={`${message.type === "error" ? "text-red-600" : "text-green-600"} text-xs`}>
+        {message && <p className={`${message.type === "error" ? "!text-red-600" : "!text-green-600"} text-xs`}>
           {message.text}
         </p>}
         <button 
@@ -230,20 +230,20 @@ function Login() {
         </button>
         <button
           type="button"
-          className="focus:outline-none text-sm hover:text-gray-600"
+          className="focus:outline-none text-sm !hover:text-gray-600"
         >
           <Link to="/forgot-password">Forgot Password?</Link>
         </button>
         <div className="flex flex-row items-center justify-between gap-3.5">
           <p
-            className="text-sm text-blue-600"
+            className="text-sm !text-blue-600"
             onClick={() => setIsSignup(!isSignup)}>
             {isSignup ? "Already have an account?" : "Don't have an account?"}
           </p>
           <button
             type="button"
             onClick={handleToggleMode}
-            className="focus:outline-none text-sm cursor-pointer text-blue-600 hover:text-gray-600">
+            className="focus:outline-none text-sm cursor-pointer !text-blue-600 !hover:text-gray-600">
             {isSignup ? "Login":"Sign Up"}
           </button>
         </div>

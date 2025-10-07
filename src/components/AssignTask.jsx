@@ -92,13 +92,13 @@ function AssignTask() {
 
   return (
     <div className="w-full flex flex-col p-5 bg-[#f4f6f9] z-10 mdl:items-center mdl:justify-center">
-      <h2 className='text-[#222323] font-semibold text-[28px] pt-5 pb-1 '>Assign a Task</h2>
+      <h2 className='!text-[#222323] font-semibold text-[28px] pt-5 pb-1 '>Assign a Task</h2>
       <div className="flex flex-col py-5 gap-2 mdl:w-[500px]">
         <div className="flex flex-col gap-3 bg-white py-3 px-2.5 rounded-xl shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)]
         xsm:py-5 xsm:px-7">
           {/* title */}
           <div className="flex flex-col gap-2">
-            <p className="text-[#6b7070]">Task Name</p>
+            <p className="!text-[#6b7070]">Task Name</p>
             <input 
               type="text" 
               placeholder='Enter the title'
@@ -108,19 +108,19 @@ function AssignTask() {
           </div>
           {/* description */}
           <div className="flex flex-col gap-2">
-            <p className="text-[#6b7070]">Description</p>
+            <p className="!text-[#6b7070]">Description</p>
             <textarea 
               type="text" 
               placeholder='Enter task description...'
               rows={5}
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              className="border border-[#9fa5a5] rounded-xl px-4 py-1.5 focus:outline-none"/>
+              className="border !border-[#9fa5a5] rounded-xl px-4 py-1.5 focus:outline-none"/>
           </div>
           {/* dates */}
           <div className="flex flex-col gap-3">
             <div className="flex flex-col justify-center gap-2">
-              <p className="text-[#6b7070]">Assign Date</p>
+              <p className="!text-[#6b7070]">Assign Date</p>
               <div className="custom-datepicker">
                 <DatePicker
                   selected={assignDate}
@@ -142,14 +142,14 @@ function AssignTask() {
                         alt="Calendar"
                         className="w-5 h-5"
                       />
-                      <p className="w-full text-[#6b7070] text-left">{formatDate(assignDate)}</p>
+                      <p className="w-full !text-[#6b7070] text-left">{formatDate(assignDate)}</p>
                     </button>
                   }
                 />
               </div>
             </div>
             <div className="flex flex-col justify-center gap-2">
-              <p className="text-[#6b7070]">Due Date</p>
+              <p className="!text-[#6b7070]">Due Date</p>
               <div className="custom-datepicker">
                 <DatePicker
                   selected={dueDate}
@@ -171,7 +171,7 @@ function AssignTask() {
                         alt="Calendar"
                         className="w-5 h-5"
                       />
-                      <p className="w-full text-[#6b7070] text-left">{formatDate(dueDate)}</p>
+                      <p className="w-full !text-[#6b7070] text-left">{formatDate(dueDate)}</p>
                     </button>
                   }
                 />
@@ -180,7 +180,7 @@ function AssignTask() {
           </div>
           {/* priority */}
           <div className="flex flex-col gap-2">
-            <p className="text-[#6b7070]">Priority</p>
+            <p className="!text-[#6b7070]">Priority</p>
             <ul className="flex flex-row justify-between items-center">
               {
                 priorityLevels.map((priority) => (
@@ -188,7 +188,7 @@ function AssignTask() {
                     key={priority}
                     onClick={()=> setSelectedPriority(priority)}
                     className={`w-[85px] text-center rounded-3xl px-3 py-1.5 focus:outline-none border 
-                    ${selectedPriority === priority ? 'border-[#3bdcdc] text-[#3b99dc] bg-[#d1e4f1]': 'border-[#9fa5a5] text-[#6b7070]'} cursor-pointer`}>
+                    ${selectedPriority === priority ? '!border-[#3bdcdc] !text-[#3b99dc] !bg-[#d1e4f1]': '!border-[#9fa5a5] !text-[#6b7070]'} cursor-pointer`}>
                     {priority}
                 </li>
                 ))
@@ -202,11 +202,11 @@ function AssignTask() {
         <button
           onClick={assignTasktoUser}
           type="button"
-          className="bg-[linear-gradient(135deg,_#282b36,_#4c4566)] text-[#efefef] py-2 px-3 rounded mt-5">
+          className="bg-[linear-gradient(135deg,_#282b36,_#4c4566)] !text-[#efefef] py-2 px-3 rounded mt-5">
             {loading ? "Assigning..." : "Assign Task"}
         </button>
         {successMessage && (
-          <p className="text-green-600 font-semibold mt-2">{successMessage}</p>
+          <p className="!text-green-600 font-semibold mt-2">{successMessage}</p>
         )}
       </div>
     </div>

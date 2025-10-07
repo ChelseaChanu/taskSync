@@ -61,7 +61,7 @@ function Sidebar() {
   return (
     <>
       {!isOpen && (
-        <div className="sticky top-0 left-0 z-20 w-full h-16 flex flex-row items-center justify-between p-5 bg-gradient-to-r from-[#282b36] via-[#4c4566] to-[#66617a] shadow-[0_10px_20px_rgba(0,0,0,0.19),_0_6px_6px_rgba(0,0,0,0.23)]
+        <div className="sticky top-0 left-0 z-20 w-full h-16 flex flex-row items-center justify-between p-5 bg-gradient-to-r !from-[#282b36] !via-[#4c4566] !to-[#66617a] shadow-[0_10px_20px_rgba(0,0,0,0.19),_0_6px_6px_rgba(0,0,0,0.23)]
         md:hidden">
           <div className="w-8 cursor-pointer" onClick={() => setIsOpen(true)}>
             <img src={`/Images/Menu Button.png`} alt="Menu" />
@@ -79,15 +79,15 @@ function Sidebar() {
           <div className="w-full md:hidden" onClick={() => setIsOpen(false)}>
             <img src={`/Images/Menu Button.png`} alt="Menu" className="w-8"/>
           </div>
-          <div className="w-full flex flex-row items-center gap-5 py-7 border-b border-gray-50">
-            <div className='w-14 h-14 bg-cyan-200 flex items-center justify-center rounded-full'>
-              <div className='w-[54px] h-[54px] bg-gray-700 flex items-center justify-center rounded-full'>
+          <div className="w-full flex flex-row items-center gap-5 py-7 border-b !border-gray-50">
+            <div className='w-14 h-14 !bg-cyan-200 flex items-center justify-center rounded-full'>
+              <div className='w-[54px] h-[54px] !bg-gray-700 flex items-center justify-center rounded-full'>
                 <img src={`/Images/user-head.png`} alt="User" />
               </div>
             </div>
             <div className="flex flex-col gap-0.5">
-              <h6 className="text-[#efefef] text-xl font-medium">{`${userName.firstName} ${userName.lastName}`}</h6>
-              <p className="text-[#efefef] text-sm">{designation}</p>
+              <h6 className="!text-[#efefef] text-xl font-medium">{`${userName.firstName} ${userName.lastName}`}</h6>
+              <p className="!text-[#efefef] text-sm">{designation}</p>
             </div>
           </div>
           <ul className="w-full flex flex-col space-y-2 py-8">
@@ -97,7 +97,7 @@ function Sidebar() {
                 className="flex flex-row items-center gap-3"
                 onClick={() => setIsOpen(false)}>
                 <img src={`/Images/Dashboard.png`} alt="" />
-                <p className="text-[#efefef]">Dashboard</p>
+                <p className="!text-[#efefef]">Dashboard</p>
               </Link>
             </li>
             <li className="py-4">
@@ -106,7 +106,7 @@ function Sidebar() {
                 className="flex flex-row items-center gap-3"
                 onClick={() => setIsOpen(false)}>
                 <img src={`/Images/Assign-task.png`} alt="" />
-                <p className="text-[#efefef]">Assign Task</p>
+                <p className="!text-[#efefef]">Assign Task</p>
               </Link>
             </li>
             <li className="py-4">
@@ -115,24 +115,15 @@ function Sidebar() {
                 className="flex flex-row items-center gap-3"
                 onClick={() => setIsOpen(false)}>
                 <img src={`/Images/recieve-icon.png`} alt="" />
-                <p className="text-[#efefef]">Received Tasks</p>
+                <p className="!text-[#efefef]">Received Tasks</p>
               </Link>
             </li>
-            {/* <li className="py-4">
-              <Link
-                to="/history"
-                className="flex flex-row items-center gap-3"
-                onClick={() => setIsOpen(false)}>
-                <img src={`/Images/History.png`} alt="" />
-                <p className="text-[#efefef]">History</p>
-              </Link>
-            </li> */}
             <li className="py-4">
               <Link
                 onClick={handleLogout}
                 className="flex flex-row items-center gap-3">
                 <img src="/" alt="" />
-                <p className="text-[#efefef]">Logout</p>
+                <p className="!text-[#efefef]">Logout</p>
               </Link>
             </li>
           </ul>
@@ -142,15 +133,15 @@ function Sidebar() {
         <div className="w-full md:hidden" onClick={() => setIsOpen(false)}>
           <img src={`/Images/Menu Button.png`} alt="Menu" className="w-8"/>
         </div>
-        <div className="w-full flex flex-row items-center gap-5 py-7 border-b border-gray-50">
-          <div className='w-14 h-14 bg-cyan-200 flex items-center justify-center rounded-full'>
-            <div className='w-[54px] h-[54px] bg-gray-700 flex items-center justify-center rounded-full'>
+        <div className="w-full flex flex-row items-center gap-5 py-7 border-b !border-gray-50">
+          <div className='w-14 h-14 !bg-cyan-200 flex items-center justify-center rounded-full'>
+            <div className='w-[54px] h-[54px] !bg-gray-700 flex items-center justify-center rounded-full'>
               <img src={`/Images/user-head.png`} alt="User" />
             </div>
           </div>
           <div className="flex flex-col gap-0.5">
-            <h6 className="text-[#efefef] text-xl font-medium">{`${userName.firstName} ${userName.lastName}`}</h6>
-            <p className="text-[#efefef] text-sm">{designation}</p>
+            <h6 className="!text-[#efefef] text-xl font-medium">{`${userName.firstName} ${userName.lastName}`}</h6>
+            <p className="!text-[#efefef] text-sm">{designation}</p>
           </div>
         </div>
         <ul className="w-full flex flex-col space-y-2 py-8">
@@ -160,7 +151,7 @@ function Sidebar() {
               className="flex flex-row items-center gap-3"
               onClick={() => setIsOpen(false)}>
               <img src={`/Images/Dashboard.png`} alt="" />
-              <p className="text-[#efefef]">Dashboard</p>
+              <p className="!text-[#efefef]">Dashboard</p>
             </Link>
           </li>
           <li className="py-4">
@@ -169,7 +160,7 @@ function Sidebar() {
               className="flex flex-row items-center gap-3"
               onClick={() => setIsOpen(false)}>
               <img src={`/Images/Assign-task.png`} alt="" />
-              <p className="text-[#efefef]">Assign Task</p>
+              <p className="!text-[#efefef]">Assign Task</p>
             </Link>
           </li>
           <li className="py-4">
@@ -178,24 +169,15 @@ function Sidebar() {
               className="flex flex-row items-center gap-3"
               onClick={() => setIsOpen(false)}>
               <img src={`/Images/recieve-icon.png`} alt="" />
-              <p className="text-[#efefef]">Received Tasks</p>
+              <p className="!text-[#efefef]">Received Tasks</p>
             </Link>
           </li>
-          {/* <li className="py-4">
-            <Link
-              to="/history"
-              className="flex flex-row items-center gap-3"
-              onClick={() => setIsOpen(false)}>
-              <img src={`/Images/History.png`} alt="" />
-              <p className="text-[#efefef]">History</p>
-            </Link>
-          </li> */}
           <li className="py-4">
               <Link
                 className="flex flex-row items-center gap-3"
                 onClick={handleLogout}>
                 <img src="/" alt="" />
-                <p className="text-[#efefef]">Logout</p>
+                <p className="!text-[#efefef]">Logout</p>
               </Link>
             </li>
         </ul>

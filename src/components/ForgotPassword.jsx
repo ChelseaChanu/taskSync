@@ -31,7 +31,7 @@ function ForgotPassword() {
   }
 
   return (
-    <div className="w-full min-h-screen flex items-center justify-center bg-[#C7CFE2]">
+    <div className="w-full min-h-screen flex items-center justify-center !bg-[#C7CFE2]">
       <form onSubmit={handleForgotPassword}
         className="w-full h-screen bg-[linear-gradient(135deg,_#C7CFE2,_#DDE1EE,_#E6EBF5)] flex 
           flex-col items-center justify-center gap-5 p-6 xs:w-[320px] xs:h-4/5 xs:rounded-2xl xs:shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
@@ -46,8 +46,8 @@ function ForgotPassword() {
           <img src={`/Images/email-icon.png`} alt='email-icon' className="" />
         </div>
         <h2 className="text-2xl font-bold">Forgot Password ?</h2>
-        <p className="text-xs text-[#2385c6]">Enter your email to reset the password</p>
-        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl border-[#7b7b7e] px-3.5 py-2.5">
+        <p className="text-xs !text-[#2385c6]">Enter your email to reset the password</p>
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
           <img src={`/Images/mail.png`} alt="" className="w-5"/>
           <input 
             type="email" 
@@ -57,12 +57,12 @@ function ForgotPassword() {
             required
             className="focus:outline-none bg-transparent"/>
           </div>
-          {message && <p className={`${message.type === "error" ? "text-red-600" : "text-green-600"} text-xs`}>
+          {message && <p className={`${message.type === "error" ? "!text-red-600" : "!text-green-600"} text-xs`}>
             {message.text}
           </p>}
           <button 
             type='submit'
-            className="w-[270px] rounded-3xl bg-[#444665] text-[#efefef] hover:bg-[#171a3d] text-base font-medium px-5 py-2.5">
+            className="w-[270px] rounded-3xl !bg-[#444665] !text-[#efefef] !hover:bg-[#171a3d] text-base font-medium px-5 py-2.5">
               Send Email
           </button>
       </form>

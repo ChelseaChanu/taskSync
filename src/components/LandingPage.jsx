@@ -82,7 +82,7 @@ function LandingPage() {
 
   if (loading) {
     return (
-      <div className="flex items-center justify-center min-h-screen text-gray-600 text-lg">
+      <div className="flex items-center justify-center min-h-screen !text-gray-600 text-lg">
         Loading user info...
       </div>
     );
@@ -90,7 +90,7 @@ function LandingPage() {
 
   return (
     <div className="bg-[linear-gradient(to_bottom_right,#04283d,#8000FF,#FF00FF)] min-h-screen w-full flex flex-col items-center justify-center">
-      <div className="w-[95%] flex flex-col gap-5 rounded bg-white p-4.5 shadow-[0_5px_15px_rgba(0,0,0,0.35)] mds:w-[90%] mds:gap-10 mds:rounded-2xl mds:p-10 mdln:w-[900px]">
+      <div className="w-[95%] flex flex-col gap-5 rounded !bg-white p-4.5 shadow-[0_5px_15px_rgba(0,0,0,0.35)] mds:w-[90%] mds:gap-10 mds:rounded-2xl mds:p-10 mdln:w-[900px]">
         
         {/* Header section with logo + logout */}
         <div className="flex flex-col items-center gap-3.5 mds:gap-0 mds:flex-row mds:justify-between">
@@ -103,7 +103,7 @@ function LandingPage() {
             <button
               onClick={() => handleRoleClick("Admin")}
               disabled={!userData}
-              className={`uppercase text-sm tracking-wider text-[#5d5c5c] ${
+              className={`uppercase text-sm tracking-wider !text-[#5d5c5c] ${
                 !userData ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
               }`}
             >
@@ -113,7 +113,7 @@ function LandingPage() {
             <button
               onClick={() => handleRoleClick("Principal")}
               disabled={!userData}
-              className={`uppercase text-sm tracking-wider text-[#5d5c5c] ${
+              className={`uppercase text-sm tracking-wider !text-[#5d5c5c] ${
                 !userData ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
               }`}
             >
@@ -123,7 +123,7 @@ function LandingPage() {
             <button
               onClick={() => handleRoleClick("Teacher")}
               disabled={!userData}
-              className={`uppercase text-sm tracking-wider text-[#5d5c5c] ${
+              className={`uppercase text-sm tracking-wider !text-[#5d5c5c] ${
                 !userData ? "opacity-50 cursor-not-allowed" : "cursor-pointer"
               }`}
             >
@@ -133,7 +133,7 @@ function LandingPage() {
             {/* Logout Button */}
             <button
               onClick={handleLogout}
-              className="bg-red-500 hover:bg-red-600 text-white px-3 py-1 rounded-md text-xs font-semibold"
+              className="!bg-red-500 !hover:bg-red-600 !text-white px-3 py-1 rounded-md text-xs font-semibold"
             >
               Logout
             </button>
@@ -143,10 +143,10 @@ function LandingPage() {
         {/* Hero section */}
         <div className="flex flex-col-reverse items-center gap-3 mds:gap-0 mds:flex-row mdln:gap-10">
           <div className="flex flex-col items-center gap-8">
-            <h1 className="text-[#113449] !text-5xl font-extrabold mds:text-6xl">
+            <h1 className="!text-[#113449] !text-5xl font-extrabold mds:text-6xl">
               Achieve More, Effortlessly
             </h1>
-            <p className="text-[17px] font-medium text-[#434345] mds:pr-10">
+            <p className="!text-[17px] font-medium !text-[#434345]! mds:pr-10">
               Simplify your workflow, organize projects, and collaborate seamlessly with our intuitive platform.
             </p>
           </div>

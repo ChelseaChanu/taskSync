@@ -9,7 +9,7 @@ function DashboardCard(props) {
       </div>
       <div className="flex flex-col justify-center gap-1.5 flex-1">
         <div className="h-[28px] flex items-center">
-          <h3 className="text-[22px] font-medium text-[#2b2a2a]">{title}</h3>
+          <h3 className="text-[22px] font-medium !text-[#2b2a2a]">{title}</h3>
         </div>
         <p className="">{description}</p>
       </div>

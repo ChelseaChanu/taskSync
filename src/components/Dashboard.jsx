@@ -201,7 +201,7 @@ function Dashboard() {
 
   return (
     <div className="w-full min-h-screen">
-      <div className="bg-[#f4f6f9] w-full p-5 xs:px-10 xs:py-8">
+      <div className="!bg-[#f4f6f9] w-full p-5 xs:px-10 xs:py-8">
         <div className="mb-4">
           <button type='button' className="p-0" onClick={() => navigate("/landing-page")}>
             <img src={`/Images/back-icon.png`} alt="" className="w-9"/>
@@ -219,7 +219,7 @@ function Dashboard() {
                 onChange={(e)=>setSearchQuery(e.target.value)}
                 className="border p-2 rounded flex-1"
               />
-              <button onClick={handleSearch} className="bg-blue-500 text-white px-4 py-2 rounded">
+              <button onClick={handleSearch} className="!bg-blue-500 !text-white px-4 py-2 rounded">
                 Search
               </button>
             </div>
@@ -227,7 +227,7 @@ function Dashboard() {
               searchResults.map(u => (
                 <div
                   key={u.uid}
-                  className="cursor-pointer text-[#10455f] font-medium"
+                  className="cursor-pointer !text-[#10455f] font-medium"
                   onClick={() => {
                     setSelectedUser(u);
                     setDisplayUser(u);
@@ -239,19 +239,19 @@ function Dashboard() {
                 </div>
               ))
             ) : hasSearched ? (
-              <div className="text-red-600 mt-2">User not found</div>
+              <div className="!text-red-600 mt-2">User not found</div>
             ) : null}
           </div>
         )}
 
         {displayUser && (
           <>
-            <h2 className="text-[#222323] font-semibold text-[28px] pt-4 pb-1">
+            <h2 className="!text-[#222323] font-semibold text-[28px] pt-4 pb-1">
               {isPersonalDashboard
                 ? `Welcome ${displayUser.firstName} ${displayUser.lastName}`
                 : `Viewing ${displayUser.firstName} ${displayUser.lastName}'s Dashboard`}
             </h2>
-            <p className="text-[#303232] text-xl">This is your task dashboard</p>
+            <p className="!text-[#303232] text-xl">This is your task dashboard</p>
           </>
         )}
 
@@ -291,13 +291,13 @@ function Dashboard() {
             )}
 
             {!displayUser && isViewingOtherTeacher && (
-              <div className="text-gray-500">No data available. Search for a teacher above.</div>
+              <div className="!text-gray-500">No data available. Search for a teacher above.</div>
             )}
           </div>
         </div>
 
         {/* Notifications */}
-        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+        <div className="flex flex-col gap-4 pt-5 border-t !border-[#303232]">
           <div className="flex flex-row items-center gap-3">
             <img src={`/Images/notification.png`} alt="" />
             <h3 className="text-2xl font-semibold">Notifications</h3>
@@ -310,7 +310,7 @@ function Dashboard() {
         </div>
 
         {/* Upcoming Deadlines */}
-        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+        <div className="flex flex-col gap-4 pt-5 border-t !border-[#303232]">
           <div className="flex flex-row items-center gap-3">
             <img src={`/Images/calendar.png`} alt="" />
             <h3 className="text-2xl font-semibold">Upcoming Deadlines</h3>
@@ -327,7 +327,7 @@ function Dashboard() {
         </div>
 
         {/* Recent Activities */}
-        <div className="flex flex-col gap-4 pt-5 border-t border-[#303232]">
+        <div className="flex flex-col gap-4 pt-5 border-t !border-[#303232]">
           <div className="flex flex-row items-center gap-3">
             <img src={`/Images/recent-activities.png`}alt="" />
             <h3 className="text-2xl font-semibold">Recent Activities</h3>
