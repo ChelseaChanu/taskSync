@@ -21,6 +21,7 @@ function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
+  const [seePassword, setSeePassword] = useState("false");
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -119,10 +120,17 @@ function Login() {
       console.error("Auth error:", err.code, err.message);
 
       if (err.code === "auth/invalid-credential") {
-        setMessage({
-          text: "New user - please sign up.",
-          type: "error",
-        });
+        const methods = await fetchSignInMethodsForEmail(auth, email);
+        console.log(methods);
+        if (methods.length === 0) {
+          setMessage({ text: "No account found with this email. Please sign up.", type: "error" });
+        } else {
+          setMessage({ text: "Incorrect password. Try again.", type: "error" });
+        }
+        // setMessage({
+        //   text: "New user - please sign up.",
+        //   type: "error",
+        // });
       } else if (err.code === "auth/too-many-requests") {
         setMessage({
           text: "Too many attempts. Try again later.",
@@ -211,14 +219,21 @@ function Login() {
           />
         </div>
         <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] p-2.5">
-          <img src={`/Images/password.png`} alt="" className=""/>
+          <img src="/Images/password.png" alt="" />
           <input 
-            type="password" 
-            placeholder='Password'
+            type={seePassword ? "password" : "text"} 
+            placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             required 
-            className="w-full focus:outline-none bg-transparent"/>
+            className="w-full focus:outline-none bg-transparent"
+          />
+          <img 
+            src={seePassword ? "/Images/password-open.png" : "/Images/password-close.png"} 
+            onClick={() => setSeePassword(!seePassword)}
+            alt="Toggle Password" 
+            className="w-[20px] h-[20px] cursor-pointer"
+          />
         </div>
         {message && <p className={`${message.type === "error" ? "!text-red-600" : "!text-green-600"} text-xs`}>
           {message.text}
