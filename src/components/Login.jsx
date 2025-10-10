@@ -21,7 +21,7 @@ function Login() {
   const [isSignup, setIsSignup] = useState(false);
   const [waitingVerification, setWaitingVerification] = useState(false);
   const [message, setMessage] = useState({ text: "", type: "" });
-  const [seePassword, setSeePassword] = useState("false");
+  const [seePassword, setSeePassword] = useState(false);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -107,7 +107,7 @@ function Login() {
           email: user.email,
           createdAt: serverTimestamp(),
         });
-      }else {
+      } else {
         userData = userSnap.data(); 
       }
 
@@ -121,16 +121,11 @@ function Login() {
 
       if (err.code === "auth/invalid-credential") {
         const methods = await fetchSignInMethodsForEmail(auth, email);
-        console.log(methods);
         if (methods.length === 0) {
           setMessage({ text: "No account found with this email. Please sign up.", type: "error" });
         } else {
           setMessage({ text: "Incorrect password. Try again.", type: "error" });
         }
-        // setMessage({
-        //   text: "New user - please sign up.",
-        //   type: "error",
-        // });
       } else if (err.code === "auth/too-many-requests") {
         setMessage({
           text: "Too many attempts. Try again later.",
@@ -168,8 +163,8 @@ function Login() {
         className="w-full h-screen bg-[linear-gradient(135deg,_#C7CFE2,_#DDE1EE,_#E6EBF5)] flex 
           flex-col items-center justify-center gap-3 p-6 xs:w-[320px] xs:!h-[550px] xs:rounded-2xl xs:shadow-[0_5px_15px_rgba(0,0,0,0.35)]">
         <h2 className="text-2xl font-bold mb-2">{isSignup ? "Sign Up" : "Login"}</h2>
-        {
-          isSignup && (
+
+        {isSignup && (
           <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
             <img src={`/Images/name.png`} alt="" className=""/>
             <input 
@@ -179,10 +174,10 @@ function Login() {
               onChange={(e) => setFirstName(e.target.value)}
               required
               className="w-full focus:outline-none bg-transparent"/>
-          </div>)
-        }
-        {
-          isSignup && (
+          </div>
+        )}
+
+        {isSignup && (
           <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
             <img src={`/Images/name.png`} alt="" className=""/>
             <input 
@@ -192,21 +187,26 @@ function Login() {
               onChange={(e) => setLastName(e.target.value)}
               required
               className="w-full focus:outline-none bg-transparent"/>
-          </div>)
-        }
-        {
-          isSignup && (
-          <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
-            <img src={`/Images/Designation.png`} alt="" className=""/>
-            <input 
-              type="text" 
-              placeholder='Designation' 
-              value={designation}
-              onChange={(e) => setDesignation(e.target.value)}
-              required
-              className="w-full focus:outline-none bg-transparent"/>
-          </div>)
-        }
+          </div>
+        )}
+
+        {/*Designation Dropdown */}
+        <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
+          <img src={`/Images/Designation.png`} alt="" className="" />
+          <select
+            value={designation}
+            onChange={(e) => setDesignation(e.target.value)}
+            required
+            className="w-full focus:outline-none bg-transparent"
+          >
+            <option value="" disabled>Select Designation</option>
+            <option value="Principal">Principal</option>
+            <option value="Vice-Principal">Vice-Principal</option>
+            <option value="Headmistress">Headmistress</option>
+            <option value="Teacher">Teacher</option>
+          </select>
+        </div>
+
         <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] px-3.5 py-2.5">
           <img src={`/Images/mail.png`} alt="" className=""/>
           <input 
@@ -218,10 +218,11 @@ function Login() {
             className="w-full focus:outline-none bg-transparent"
           />
         </div>
+
         <div className="w-[270px] flex flex-row gap-3 border-[2px] rounded-3xl !border-[#7b7b7e] p-2.5">
           <img src="/Images/password.png" alt="" />
           <input 
-            type={seePassword ? "password" : "text"} 
+            type={seePassword ? "text" : "password"} 
             placeholder="Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
@@ -235,23 +236,29 @@ function Login() {
             className="w-[20px] h-[20px] cursor-pointer"
           />
         </div>
-        {message && <p className={`${message.type === "error" ? "!text-red-600" : "!text-green-600"} text-xs`}>
-          {message.text}
-        </p>}
+
+        {message && (
+          <p className={`${message.type === "error" ? "!text-red-600" : "!text-green-600"} text-xs`}>
+            {message.text}
+          </p>
+        )}
+
         <button 
           type='submit'
           className="w-[270px] rounded-3xl bg-[#444665] text-[#efefef] hover:bg-[#171a3d] text-base font-medium px-5 py-2.5">
             {isSignup ? "Sign Up" : "Login"}
         </button>
+
         <button
           type="button"
           className="focus:outline-none text-sm !hover:text-gray-600"
         >
           <Link to="/forgot-password">Forgot Password?</Link>
         </button>
+
         <div className="flex flex-row items-center justify-between gap-3.5">
           <p
-            className="text-sm !text-blue-600"
+            className="text-sm !text-blue-600 cursor-pointer"
             onClick={() => setIsSignup(!isSignup)}>
             {isSignup ? "Already have an account?" : "Don't have an account?"}
           </p>
@@ -259,7 +266,7 @@ function Login() {
             type="button"
             onClick={handleToggleMode}
             className="focus:outline-none text-sm cursor-pointer !text-blue-600 !hover:text-gray-600">
-            {isSignup ? "Login":"Sign Up"}
+            {isSignup ? "Login" : "Sign Up"}
           </button>
         </div>
       </form>
