@@ -138,7 +138,7 @@ function AuthPage() {
 
     } catch (err) {
       console.error("Auth error:", err.code, err.message);
-      if (err.code === "auth/invalid-credentials") setMessage({ text: "Wrong password or email. If new user please sign-up.", type: "error" });
+      if (err.code === "auth/invalid-credential") setMessage({ text: "Wrong password or email. If new user please sign-up.", type: "error" });
       else if (err.code === "auth/email-already-in-use") {
         setMessage({ text: "User exists. Please login.", type: "error" });
         setIsSignup(false);

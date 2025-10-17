@@ -19,14 +19,23 @@ function TaskCard() {
   const location = useLocation();
 
   const [task, setTask] = useState(null);
+  const [taskOwner, setTaskOwner] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const [viewModal, setViewModal] = useState(false);
   const [submissionDescription, setSubmissionDescription] = useState("");
   const [attachments, setAttachments] = useState([]);
   const [resetAttachments, setResetAttachments] = useState(false);
   const [submissions, setSubmissions] = useState([]);
+  const [buttonType, setButtonType] = useState(null); // 'submit' | 'view' | null
 
   const currentUserId = auth.currentUser?.uid;
+
+  // Define hierarchy from lowest to highest
+  const hierarchy = ["teacher", "headmistress", "vice-principal", "principal"];
+
+  const isLowerOrSameHierarchy = (viewerRole, viewedRole) => {
+    return hierarchy.indexOf(viewerRole) >= hierarchy.indexOf(viewedRole);
+  };
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -39,7 +48,14 @@ function TaskCard() {
         const docSnap = await getDoc(docRef);
 
         if (docSnap.exists()) {
-          setTask({ id: docSnap.id, ...docSnap.data() });
+          const taskData = { id: docSnap.id, ...docSnap.data() };
+          setTask(taskData);
+
+          // Fetch task owner info
+          if (taskData.createdBy) {
+            const ownerSnap = await getDoc(doc(db, "users", taskData.createdBy));
+            if (ownerSnap.exists()) setTaskOwner(ownerSnap.data());
+          }
         } else {
           console.log("No such task found for ID:", taskId);
         }
@@ -50,6 +66,40 @@ function TaskCard() {
 
     if (taskId) fetchTask();
   }, [taskId]);
+
+  // Determine which button to show
+  useEffect(() => {
+    if (!task || !taskOwner) return;
+
+    const viewerId = currentUserId;
+    const viewerRole = auth.currentUser?.role || "teacher";
+    const ownerRole = taskOwner.role || "teacher";
+
+    const isViewingOwnData = task.assignedToObjects?.some(u => u.uid === viewerId);
+
+    // Viewing own tasks
+    if (isViewingOwnData) {
+      setButtonType("submit");
+    } 
+    // Viewer is lower or same hierarchy
+    else if (isLowerOrSameHierarchy(viewerRole, ownerRole)) {
+      // Task assigned by the viewed user
+      if (task.createdBy === taskOwner.uid) {
+        setButtonType("view");
+      } 
+      // Task assigned to the viewed user
+      else if (task.assignedToObjects?.some(u => u.uid === taskOwner.uid)) {
+        setButtonType("view");
+      } 
+      else {
+        setButtonType(null);
+      }
+    } 
+    // Viewer is lower than task owner
+    else {
+      setButtonType(null);
+    }
+  }, [task, taskOwner, currentUserId]);
 
   const handleSubmit = async () => {
     try {
@@ -87,6 +137,14 @@ function TaskCard() {
     setSubmissions(subs);
   };
 
+  const handleBack = () => {
+    if (location.state?.selectedUser) {
+      navigate("/view-users", { state: location.state });
+    } else {
+      navigate(-1);
+    }
+  };
+
   if (!task) {
     return (
       <div className="flex justify-center items-center min-h-screen">
@@ -94,17 +152,6 @@ function TaskCard() {
       </div>
     );
   }
-
-  const isAssigner = currentUserId === task.createdBy;
-
-  const handleBack = () => {
-    if (location.state?.selectedUser) {
-      // go back with state
-      navigate("/view-users", { state: location.state });
-    } else {
-      navigate(-1); // fallback
-    }
-  };
 
   return (
     <div className="w-full min-h-screen flex flex-col gap-6 px-5 pt-5 pb-8 !bg-[#f4f6f9] z-10 mdl:px-10">
@@ -191,8 +238,9 @@ function TaskCard() {
         </div>
       )}
 
+      {/* Button Section */}
       <div className="flex justify-center w-full mt-4">
-        {!isAssigner ? (
+        {buttonType === "submit" && (
           <button
             onClick={() => setShowModal(true)}
             type="button"
@@ -200,7 +248,8 @@ function TaskCard() {
           >
             Submit
           </button>
-        ) : (
+        )}
+        {buttonType === "view" && (
           <button
             onClick={() => {
               fetchSubmissions();
@@ -234,10 +283,16 @@ function TaskCard() {
               reset={resetAttachments}
             />
             <div className="flex justify-end gap-3 mt-4">
-              <button onClick={() => setShowModal(false)} className="px-4 py-2 !bg-gray-300 rounded">
+              <button
+                onClick={() => setShowModal(false)}
+                className="px-4 py-2 !bg-gray-300 rounded"
+              >
                 Cancel
               </button>
-              <button onClick={handleSubmit} className="px-4 py-2 !bg-blue-600 !text-white rounded">
+              <button
+                onClick={handleSubmit}
+                className="px-4 py-2 !bg-blue-600 !text-white rounded"
+              >
                 Submit
               </button>
             </div>
@@ -270,7 +325,13 @@ function TaskCard() {
                     {sub.attachments?.length > 0 && (
                       <div className="mt-1 flex flex-col gap-1">
                         {sub.attachments.map((file, i) => (
-                          <a key={i} href={file.url} target="_blank" rel="noopener noreferrer" className="!text-blue-600 underline text-sm">
+                          <a
+                            key={i}
+                            href={file.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="!text-blue-600 underline text-sm"
+                          >
                             {file.name}
                           </a>
                         ))}
@@ -280,7 +341,10 @@ function TaskCard() {
                 );
               })
             )}
-            <button onClick={() => setViewModal(false)} className="mt-4 px-4 py-2 !bg-gray-300 rounded">
+            <button
+              onClick={() => setViewModal(false)}
+              className="mt-4 px-4 py-2 !bg-gray-300 rounded"
+            >
               Close
             </button>
           </div>
