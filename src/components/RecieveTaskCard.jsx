@@ -3,7 +3,7 @@ import React from 'react'
 function RecieveTaskCard({task, onClick}) {
 
   return (
-    <div onClick={onClick} className="w-[300px] h-[240px] rounded-[10px] flex-shrink-0 flex flex-col justify-center items-start gap-1.5 px-5 py-3 border !border-[#8f8f8f] shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)] cursor-pointer">
+    <div onClick={onClick} className="w-[280px] h-[280px] rounded-[10px] flex-shrink-0 flex flex-col justify-center items-start gap-1.5 px-5 py-3 border !border-[#8f8f8f] shadow-[0px_2px_5px_-1px_rgba(50,50,93,0.25)] cursor-pointer">
       <h2 className="text-[18px] !text-[#383839] font-medium">{task.title}</h2>
       <p className="!text-[#383839]">{task.description?.length > 60
           ? task.description.slice(0, 30) + "..."
