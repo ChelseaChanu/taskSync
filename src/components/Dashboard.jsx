@@ -201,20 +201,24 @@ function Dashboard() {
               task${counts.received>1?'s':''}`:"No task assigned. Come back later!"} 
               icon="Recieve.png" width="w-[2.3rem]"/>
               }
+            
+            {selectedUser?.role !== "Principal" && 
+              <DashboardCard 
+                title="Completed" 
+                description={counts.completed>0?`${counts.completed} 
+                task${counts.completed>1?'s':''}`:"Will appear once you complete a task!"} 
+                icon="complete-icon.png" width="w-[2.3rem]"
+              />}
 
-            <DashboardCard 
-              title="Completed" 
-              description={counts.completed>0?`${counts.completed} 
-              task${counts.completed>1?'s':''}`:"Will appear once you complete a task!"} 
-              icon="complete-icon.png" width="w-[2.3rem]"
-            />
-            <DashboardCard 
-              title="Overdue" 
-              description={counts.overdue>0?`${counts.overdue} 
-              task${counts.overdue>1?'s':''}`:"No overdue tasks!"} 
-              icon="overdue-icon.png" 
-              width="w-[2.3rem]"
-            />
+            {selectedUser?.role !== "Principal" && 
+              <DashboardCard 
+                title="Overdue" 
+                description={counts.overdue>0?`${counts.overdue} 
+                task${counts.overdue>1?'s':''}`:"No overdue tasks!"} 
+                icon="overdue-icon.png" 
+                width="w-[2.3rem]"
+              />
+            }
           </div>
         </div>
 

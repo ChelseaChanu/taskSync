@@ -121,6 +121,11 @@ export default function ViewUsers() {
 
   const summary = calculateSummary();
 
+  // Determine if "Tasks Assigned" should be hidden
+  const isViewingTeacher =
+    selectedUser?.designation?.toLowerCase() === "teacher" &&
+    ["principal", "vice-principal", "headmistress"].includes(loggedInDesignation?.toLowerCase());
+
   return (
     <div className="min-h-screen bg-[#f4f6f9] flex flex-col items-center py-10 px-6">
       <h2 className="text-3xl font-semibold text-[#222323] mb-6">
@@ -165,10 +170,12 @@ export default function ViewUsers() {
 
           {/* Summary Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-6">
-            <div className="bg-blue-100 text-blue-800 px-4 py-3 rounded-lg text-center shadow-sm">
-              <h4 className="font-bold text-lg">{summary.assigned}</h4>
-              <p className="text-sm">Tasks Assigned</p>
-            </div>
+            {!isViewingTeacher && (
+              <div className="bg-blue-100 text-blue-800 px-4 py-3 rounded-lg text-center shadow-sm">
+                <h4 className="font-bold text-lg">{summary.assigned}</h4>
+                <p className="text-sm">Tasks Assigned</p>
+              </div>
+            )}
             <div className="bg-green-100 text-green-800 px-4 py-3 rounded-lg text-center shadow-sm">
               <h4 className="font-bold text-lg">{summary.received}</h4>
               <p className="text-sm">Tasks Received</p>
@@ -184,22 +191,24 @@ export default function ViewUsers() {
           </div>
 
           {/* Tasks Assigned */}
-          <section>
-            <h4 className="text-lg font-semibold text-blue-700 mb-2">
-              Tasks Assigned
-            </h4>
-            {assignedTasks.length > 0 ? (
-              <div className="flex flex-wrap gap-4">
-                {assignedTasks.map((task) => (
-                  <div key={task.id} onClick={() => handleOpenTask(task.id)}>
-                    <RecieveTaskCard task={task} />
-                  </div>
-                ))}
-              </div>
-            ) : (
-              <p className="text-gray-500 italic">No tasks assigned by this user.</p>
-            )}
-          </section>
+          {!isViewingTeacher && (
+            <section>
+              <h4 className="text-lg font-semibold text-blue-700 mb-2">
+                Tasks Assigned
+              </h4>
+              {assignedTasks.length > 0 ? (
+                <div className="flex flex-wrap gap-4">
+                  {assignedTasks.map((task) => (
+                    <div key={task.id} onClick={() => handleOpenTask(task.id)}>
+                      <RecieveTaskCard task={task} />
+                    </div>
+                  ))}
+                </div>
+              ) : (
+                <p className="text-gray-500 italic">No tasks assigned by this user.</p>
+              )}
+            </section>
+          )}
 
           {/* Tasks Received */}
           <section>
