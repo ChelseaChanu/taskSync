@@ -63,9 +63,10 @@ function Sidebar() {
   // Define links
   const links = [
     { name: "Dashboard", path: "/dashboard", icon: "/Images/Dashboard.png" },
-    { name: "Assign Task", path: "/assign-task", icon: "/Images/Assign-task.png" },
+    ...(designation !== "Teacher"
+      ? [ { name : "Assign Task", path: "/assign-task", icon: "/Images/Assign-task.png"}]
+      : []),
     { name: "Task List", path: "/task-list", icon: "/Images/recieve-icon.png" },
-    // Team Overview only if logged-in user is not a Teacher
     ...(designation !== "Teacher"
       ? [{ name: "Team Overview", path: "/view-users", icon: "/Images/recieve-icon.png" }]
       : []),
